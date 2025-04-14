@@ -1,5 +1,7 @@
 # API Biblioteca
 
+![https://img.shields.io/badge/:badgeContent](https://img.shields.io/badge/NODE.JS-BACKEND-5FA04E?logo=nodedotjs&style=for-the-badge)
+
 A **API Biblioteca** é uma **RESTful API** para o gerenciamento de uma biblioteca, permitindo o controle de livros, empréstimos e o cadastro de usuários. A API foi construída utilizando o padrão **MVC** (Model-View-Controller) e expõe endpoints para operações CRUD (Criar, Ler, Atualizar, Deletar) sobre as entidades principais da biblioteca, como livros, categorias, pessoas, usuários e empréstimos.
 
 ## Funcionalidades
