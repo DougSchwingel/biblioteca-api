@@ -4,22 +4,22 @@ import EmprestimoController from '../controllers/EmprestimoController';
 const router = Router();
 
 
-// Criar novo empréstimo
-router.post('/', EmprestimoController.criar);
+//Criar novo empréstimo
+router.post('/', EmprestimoController.criarEmprestimo);
 
-// Listar todos os empréstimos
-router.get('/', EmprestimoController.listar);
+//Listar todos os empréstimos
+router.get('/', EmprestimoController.listarEmprestimo);
 
-// Buscar empréstimo por ID
+//Buscar empréstimo por Id
 router.get('/:id', EmprestimoController.buscarPorId);
 
-// Buscar empréstimo por ID do usuário
+//Buscar empréstimo por Id do usuário
 router.get('/usuario/:usuarioId', EmprestimoController.buscarPorUsuario);
 
-// Atualizar empréstimo existente por ID
+//Atualizar empréstimo existente por Id
 router.put('/:id', EmprestimoController.atualizarPorId);
 
-// Remover empréstimo existente por ID
+//Remover empréstimo existente por Id
 router.delete('/:id', EmprestimoController.removerPorId);
 
 export default router;

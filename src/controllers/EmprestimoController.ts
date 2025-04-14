@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import EmprestimoService from '../services/EmprestimoService';
 
 class EmprestimoController {
-  async criar(req: Request, res: Response) {
+  async criarEmprestimo(req: Request, res: Response) {
     try {
       const id = await EmprestimoService.criarEmprestimo(req.body);
       res.status(201).json({ id });
@@ -11,7 +11,7 @@ class EmprestimoController {
     }
   }
 
-  async listar(req: Request, res: Response) {
+  async listarEmprestimo(req: Request, res: Response) {
     const emprestimos = await EmprestimoService.listarEmprestimos();
     res.json(emprestimos);
   }
@@ -22,7 +22,7 @@ class EmprestimoController {
     if (emprestimo) {
       res.json(emprestimo);
     } else {
-      res.status(404).json({ erro: 'Empréstimo não encontrado' });
+      res.status(404).json({ erro: 'Empréstimo não encontrado.' });
     }
   }
 

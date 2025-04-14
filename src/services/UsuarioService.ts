@@ -16,14 +16,14 @@ class UsuarioService {
 
     const senhaCriptografada = await bcrypt.hash(usuario.senha, 10);
 
-    return UsuarioModel.criar({
+    return UsuarioModel.criarUsuario({
       ...usuario,
       senha: senhaCriptografada,
     });
   }
 
   listarUsuarios(): Promise<Usuario[]> {
-    return UsuarioModel.listar();
+    return UsuarioModel.listarUsuario();
   }
 
   buscarUsuarioPorId(id: number): Promise<Usuario | null> {

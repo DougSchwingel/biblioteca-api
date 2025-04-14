@@ -14,11 +14,11 @@ class EmprestimoService {
     const pessoa = await PessoaModel.buscarPorId(usuario.idPessoa);
     if (!pessoa) throw new Error('Pessoa associada ao usuário não encontrada.');
 
-    return EmprestimoModel.criar(emprestimo);
+    return EmprestimoModel.criarEmprestimo(emprestimo);
   }
 
   listarEmprestimos(): Promise<Emprestimo[]> {
-    return EmprestimoModel.listar();
+    return EmprestimoModel.listarEmprestimo();
   }
 
   buscarEmprestimoPorId(id: number): Promise<Emprestimo | null> {

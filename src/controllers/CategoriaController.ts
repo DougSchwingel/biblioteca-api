@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import CategoriaService from '../services/CategoriaService';
 
 class CategoriaController {
-  async criar(req: Request, res: Response) {
+  async criarCategoria(req: Request, res: Response) {
     try {
       const id = await CategoriaService.criarCategoria(req.body);
       res.status(201).json({ id });
@@ -11,7 +11,7 @@ class CategoriaController {
     }
   }
 
-  async listar(req: Request, res: Response) {
+  async listarCategoria(req: Request, res: Response) {
     const categorias = await CategoriaService.listarCategorias();
     res.json(categorias);
   }
@@ -22,7 +22,7 @@ class CategoriaController {
     if (categoria) {
       res.json(categoria);
     } else {
-      res.status(404).json({ erro: 'Categoria não encontrada' });
+      res.status(404).json({ erro: 'Categoria não encontrada.' });
     }
   }
 

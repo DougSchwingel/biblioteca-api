@@ -52,13 +52,13 @@
     },
     "/pessoas/{id}": {
       "get": {
-        "summary": "Buscar uma pessoa por ID",
+        "summary": "Buscar uma pessoa por Id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "ID da pessoa",
+            "description": "Id da pessoa",
             "schema": {
               "type": "integer"
             }
@@ -81,13 +81,13 @@
         }
       },
       "put": {
-        "summary": "Atualizar pessoa por ID",
+        "summary": "Atualizar pessoa por Id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "ID da pessoa",
+            "description": "Id da pessoa",
             "schema": {
               "type": "integer"
             }
@@ -113,13 +113,13 @@
         }
       },
       "delete": {
-        "summary": "Remover uma pessoa por ID",
+        "summary": "Remover uma pessoa por Id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "ID da pessoa",
+            "description": "Id da pessoa",
             "schema": {
               "type": "integer"
             }
@@ -178,13 +178,13 @@
     },
     "/usuarios/{id}": {
       "get": {
-        "summary": "Buscar um usuário por ID",
+        "summary": "Buscar um usuário por Id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "ID do usuário",
+            "description": "Id do usuário",
             "schema": {
               "type": "integer"
             }
@@ -207,13 +207,13 @@
         }
       },
       "put": {
-        "summary": "Atualizar usuário por ID",
+        "summary": "Atualizar usuário por Id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "ID do usuário",
+            "description": "Id do usuário",
             "schema": {
               "type": "integer"
             }
@@ -239,13 +239,13 @@
         }
       },
       "delete": {
-        "summary": "Remover um usuário por ID",
+        "summary": "Remover um usuário por Id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "ID do usuário",
+            "description": "Id do usuário",
             "schema": {
               "type": "integer"
             }
@@ -301,13 +301,13 @@
     },
     "/livros/{id}": {
       "get": {
-        "summary": "Buscar um livro por ID",
+        "summary": "Buscar um livro por Id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "ID do livro",
+            "description": "Id do livro",
             "schema": {
               "type": "integer"
             }
@@ -330,13 +330,13 @@
         }
       },
       "put": {
-        "summary": "Atualizar livro por ID",
+        "summary": "Atualizar livro por Id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "ID do livro",
+            "description": "Id do livro",
             "schema": {
               "type": "integer"
             }
@@ -362,13 +362,13 @@
         }
       },
       "delete": {
-        "summary": "Remover um livro por ID",
+        "summary": "Remover um livro por Id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "ID do livro",
+            "description": "Id do livro",
             "schema": {
               "type": "integer"
             }
@@ -427,13 +427,13 @@
     },
     "/categorias/{id}": {
       "get": {
-        "summary": "Buscar categoria por ID",
+        "summary": "Buscar categoria por Id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "ID da categoria",
+            "description": "Id da categoria",
             "schema": {
               "type": "integer"
             }
@@ -456,13 +456,13 @@
         }
       },
       "put": {
-        "summary": "Atualizar categoria por ID",
+        "summary": "Atualizar categoria por Id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "ID da categoria",
+            "description": "Id da categoria",
             "schema": {
               "type": "integer"
             }
@@ -488,13 +488,13 @@
         }
       },
       "delete": {
-        "summary": "Remover categoria por ID",
+        "summary": "Remover categoria por Id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "ID da categoria",
+            "description": "Id da categoria",
             "schema": {
               "type": "integer"
             }
@@ -553,13 +553,13 @@
     },
     "/emprestimos/{id}": {
       "get": {
-        "summary": "Buscar um empréstimo por ID",
+        "summary": "Buscar um empréstimo por Id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "ID do empréstimo",
+            "description": "Id do empréstimo",
             "schema": {
               "type": "integer"
             }
@@ -582,13 +582,13 @@
         }
       },
       "put": {
-        "summary": "Atualizar empréstimo por ID",
+        "summary": "Atualizar empréstimo por Id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "ID do empréstimo",
+            "description": "Id do empréstimo",
             "schema": {
               "type": "integer"
             }
@@ -614,13 +614,13 @@
         }
       },
       "delete": {
-        "summary": "Remover um empréstimo por ID",
+        "summary": "Remover um empréstimo por Id",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "ID do empréstimo",
+            "description": "Id do empréstimo",
             "schema": {
               "type": "integer"
             }

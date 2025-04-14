@@ -8,11 +8,11 @@ class LivroService {
       throw new Error('Categoria não encontrada.');
     }
 
-    return LivroModel.criar(livro);
+    return LivroModel.criarLivro(livro);
   }
 
   listarLivros(): Promise<Livro[]> {
-    return LivroModel.listar();
+    return LivroModel.listarLivro();
   }
 
   buscarLivroPorId(id: number): Promise<Livro | null> {

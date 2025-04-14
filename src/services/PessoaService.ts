@@ -7,11 +7,11 @@ class PessoaService {
       throw new Error('Email já cadastrado.');
     }
 
-    return PessoaModel.criar(pessoa);
+    return PessoaModel.criarPessoa(pessoa);
   }
 
   listarPessoas(): Promise<Pessoa[]> {
-    return PessoaModel.listar();
+    return PessoaModel.listarPessoa();
   }
 
   buscarPessoaPorId(id: number): Promise<Pessoa | null> {

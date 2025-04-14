@@ -7,11 +7,11 @@ class CategoriaService {
       throw new Error('Categoria já cadastrada.');
     }
 
-    return CategoriaModel.criar(categoria);
+    return CategoriaModel.criarCategoria(categoria);
   }
 
   listarCategorias(): Promise<Categoria[]> {
-    return CategoriaModel.listar();
+    return CategoriaModel.listarCategoria();
   }
 
   buscarCategoriaPorId(id: number): Promise<Categoria | null> {

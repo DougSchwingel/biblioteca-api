@@ -1,6 +1,7 @@
 import { RowDataPacket } from 'mysql2';
 import Database from '../config/database';
 
+//Interface Livro
 export interface Livro extends RowDataPacket {
   id?: number;
   titulo: string;
@@ -8,10 +9,17 @@ export interface Livro extends RowDataPacket {
   categoriaId: number;
 }
 
+//Classe Livro
 class LivroModel {
   private db = Database.getInstance();
 
-  async criar(livro: Livro): Promise<number> {
+  //Método para criar um livro
+  async criarLivro(livro: Livro): Promise<number> {
+    const categoriaExiste = await this.db.execute('SELECT * FROM Categoria WHERE id = ?', [livro.categoriaId]);
+    if ((categoriaExiste[0] as any[]).length === 0) {
+      throw new Error('Categoria informada não existe.');
+    }
+
     const [result] = await this.db.execute(
       'INSERT INTO Livro (titulo, autor, categoriaId) VALUES (?, ?, ?)',
       [livro.titulo, livro.autor, livro.categoriaId]
@@ -19,7 +27,8 @@ class LivroModel {
     return (result as any).insertId;
   }
 
-  async listar(): Promise<any[]> {
+  //Método para listar todos os livros com suas categorias
+  async listarLivro(): Promise<any[]> {
     const [rows] = await this.db.execute(`
       SELECT 
         l.id,
@@ -30,8 +39,9 @@ class LivroModel {
       JOIN Categoria c ON l.categoriaId = c.id
     `);
     return rows as any[];
-  }  
+  }
 
+  //Método para buscar livro por Id
   async buscarPorId(id: number): Promise<any | null> {
     const [rows] = await this.db.execute(`
       SELECT 
@@ -44,24 +54,40 @@ class LivroModel {
       WHERE l.id = ?
     `, [id]);
     return (rows as any[])[0] || null;
-  }  
+  }
 
+  //Método para atualizar um livro
   async atualizarPorId(id: number, livro: Livro): Promise<void> {
+    const livroExistente = await this.buscarPorId(id);
+    if (!livroExistente) {
+      throw new Error('Livro não encontrado.');
+    }
+
+    const categoriaExiste = await this.db.execute('SELECT * FROM Categoria WHERE id = ?', [livro.categoriaId]);
+    if ((categoriaExiste[0] as any[]).length === 0) {
+      throw new Error('Categoria informada não existe.');
+    }
+
     await this.db.execute(
       'UPDATE Livro SET titulo = ?, autor = ?, categoriaId = ? WHERE id = ?',
       [livro.titulo, livro.autor, livro.categoriaId, id]
     );
   }
 
+  //Método para remover um livro, se não houver empréstimos vinculados
   async removerPorId(id: number): Promise<void> {
-    const [emprestimos] = await this.db.execute('SELECT * FROM Emprestimo WHERE livroId = ?', [id]);
-    if ((emprestimos as any).length > 0) {
-      throw new Error('Não é possível remover o livro, pois ele está associado a um empréstimo.');
+    const livroExistente = await this.buscarPorId(id);
+    if (!livroExistente) {
+      throw new Error('Livro não encontrado.');
     }
-  
-    await this.db.execute('DELETE FROM Livro WHERE id = ?', [id]);
-  }  
 
+    const [emprestimos] = await this.db.execute('SELECT * FROM Emprestimo WHERE livroId = ?', [id]);
+    if ((emprestimos as any[]).length > 0) {
+      throw new Error('Não é possível remover o livro, pois ele está vinculado a um empréstimo.');
+    }
+
+    await this.db.execute('DELETE FROM Livro WHERE id = ?', [id]);
+  }
 }
 
 export default new LivroModel();

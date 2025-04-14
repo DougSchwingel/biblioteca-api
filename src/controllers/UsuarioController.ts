@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import UsuarioService from '../services/UsuarioService';
 
 class UsuarioController {
-  async criar(req: Request, res: Response) {
+  async criarUsuario(req: Request, res: Response) {
     try {
       const id = await UsuarioService.criarUsuario(req.body);
       res.status(201).json({ id });
@@ -11,7 +11,7 @@ class UsuarioController {
     }
   }
 
-  async listar(req: Request, res: Response) {
+  async listarUsuario(req: Request, res: Response) {
     const usuarios = await UsuarioService.listarUsuarios();
     res.json(usuarios);
   }

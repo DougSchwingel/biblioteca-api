@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import LivroService from '../services/LivroService';
 
 class LivroController {
-  async criar(req: Request, res: Response) {
+  async criarLivro(req: Request, res: Response) {
     try {
       const id = await LivroService.criarLivro(req.body);
       res.status(201).json({ id });
@@ -11,7 +11,7 @@ class LivroController {
     }
   }
 
-  async listar(req: Request, res: Response) {
+  async listarLivro(req: Request, res: Response) {
     const livros = await LivroService.listarLivros();
     res.json(livros);
   }

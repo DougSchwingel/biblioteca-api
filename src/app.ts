@@ -10,12 +10,12 @@ import emprestimoRoutes from './routes/emprestimo.routes';
 
 const app = express();
 
-app.use(express.json()); // Isso permite o parsing de JSON no body das requisições
+app.use(express.json()); //Isso permite o parsing de JSON no body das requisições
 
-// Swagger
+//Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-// Aqui você define o prefixo /api para todas as rotas
+//Aqui você define o prefixo /api para todas as rotas
 app.use('/api/pessoas', pessoaRoutes);
 app.use('/api/usuarios', usuarioRoutes);
 app.use('/api/livros', livroRoutes);

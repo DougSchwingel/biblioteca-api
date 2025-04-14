@@ -1,16 +1,19 @@
 import { RowDataPacket } from 'mysql2';
 import Database from '../config/database';
 
+//Interface Usuário
 export interface Usuario extends RowDataPacket {
   id?: number;
   idPessoa: number;
   senha: string;
 }
 
+//Classe Usuário
 class UsuarioModel {
   private db = Database.getInstance();
 
-  async criar(usuario: Usuario): Promise<number> {
+  //Método para criar um novo usuário
+  async criarUsuario(usuario: Usuario): Promise<number> {
     const [result] = await this.db.execute(
       'INSERT INTO Usuario (idPessoa, senha) VALUES (?, ?)',
       [usuario.idPessoa, usuario.senha]
@@ -18,7 +21,8 @@ class UsuarioModel {
     return (result as any).insertId;
   }
 
-  async listar(): Promise<any[]> {
+  //Método para listar todos os usuários
+  async listarUsuario(): Promise<any[]> {
     const [rows] = await this.db.execute(`
       SELECT 
         u.id,
@@ -29,8 +33,9 @@ class UsuarioModel {
       JOIN Pessoa p ON u.idPessoa = p.id
     `);
     return rows as any[];
-  }  
+  }
 
+  //Método para buscar um usuário por Id
   async buscarPorId(id: number): Promise<any | null> {
     const [rows] = await this.db.execute(`
       SELECT 
@@ -45,6 +50,7 @@ class UsuarioModel {
     return (rows as any[])[0] || null;
   }
 
+  //Método para buscar um usuário pelo Id da pessoa
   async buscarPorPessoaId(idPessoa: number): Promise<any | null> {
     const [rows] = await this.db.execute(`
       SELECT 
@@ -57,25 +63,35 @@ class UsuarioModel {
       WHERE u.idPessoa = ?
     `, [idPessoa]);
     return (rows as any[])[0] || null;
-  }  
+  }
 
+  //Método para atualizar um usuário existente 
   async atualizarPorId(id: number, usuario: Usuario): Promise<void> {
+    const usuarioExistente = await this.buscarPorId(id);
+    if (!usuarioExistente) {
+      throw new Error('Usuário não encontrado.');
+    }
+
     await this.db.execute(
       'UPDATE Usuario SET idPessoa = ?, senha = ? WHERE id = ?',
       [usuario.idPessoa, usuario.senha, id]
     );
   }
 
+  //Método para remover um usuário, se não houver um empréstimo associado 
   async removerPorId(id: number): Promise<void> {
+    const usuarioExistente = await this.buscarPorId(id);
+    if (!usuarioExistente) {
+      throw new Error('Usuário não encontrado.');
+    }
+
     const [emprestimos] = await this.db.execute('SELECT * FROM Emprestimo WHERE usuarioId = ?', [id]);
-    if ((emprestimos as any).length > 0) {
+    if ((emprestimos as any[]).length > 0) {
       throw new Error('Não é possível remover o usuário, pois há empréstimos associados.');
     }
-  
+
     await this.db.execute('DELETE FROM Usuario WHERE id = ?', [id]);
   }
-  
-
 }
 
 export default new UsuarioModel();
