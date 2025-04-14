@@ -108,7 +108,7 @@ O diagrama de componentes detalha as partes internas da API, como os controllers
 
 1. **Clone o repositório**:
    ```bash
-   git clone https://github.com/seu-usuario/api-biblioteca.git
+   git clone https://github.com/DougSchwingel/biblioteca-api
    cd api-biblioteca
    npm install
    npm run dev
