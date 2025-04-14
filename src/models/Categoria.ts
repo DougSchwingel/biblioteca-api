@@ -27,22 +27,22 @@ class CategoriaModel {
   }
 
   //Método para buscar uma categoria por Id
-  async buscarPorId(id: number): Promise<Categoria | null> {
+  async buscarCategoriaPorId(id: number): Promise<Categoria | null> {
     const [rows] = await this.db.execute('SELECT * FROM Categoria WHERE id = ?', [id]);
     const categorias = rows as Categoria[];
     return categorias[0] || null;
   }
 
   //Método para buscar uma categoria pelo nome
-  async buscarPorNome(nome: string): Promise<Categoria | null> {
+  async buscarCategoriaPorNome(nome: string): Promise<Categoria | null> {
     const [rows] = await this.db.execute('SELECT * FROM Categoria WHERE nome = ?', [nome]);
     const categorias = rows as Categoria[];
     return categorias[0] || null;
   }
 
   //Método para atualizar uma categoria existente a partir do Id
-  async atualizarPorId(id: number, categoria: Categoria): Promise<void> {
-    const categoriaExistente = await this.buscarPorId(id);
+  async atualizarCategoriaPorId(id: number, categoria: Categoria): Promise<void> {
+    const categoriaExistente = await this.buscarCategoriaPorId(id);
     if (!categoriaExistente) {
       throw new Error('Categoria não encontrada.');
     }
@@ -54,8 +54,8 @@ class CategoriaModel {
   }
 
   //Método para remover uma categoria pelo Id, se não houver livros vinculados à esta categoria
-  async removerPorId(id: number): Promise<void> {
-    const categoriaExistente = await this.buscarPorId(id);
+  async removerCategoriaPorId(id: number): Promise<void> {
+    const categoriaExistente = await this.buscarCategoriaPorId(id);
     if (!categoriaExistente) {
       throw new Error('Categoria não encontrada.');
     }

@@ -5,13 +5,13 @@ import LivroModel from '../models/Livro';
 
 class EmprestimoService {
   async criarEmprestimo(emprestimo: Emprestimo): Promise<number> {
-    const livro = await LivroModel.buscarPorId(emprestimo.livroId);
+    const livro = await LivroModel.buscarLivroPorId(emprestimo.livroId);
     if (!livro) throw new Error('Livro não encontrado.');
 
-    const usuario = await UsuarioModel.buscarPorId(emprestimo.usuarioId);
+    const usuario = await UsuarioModel.buscarUsuarioPorId(emprestimo.usuarioId);
     if (!usuario) throw new Error('Usuário não encontrado.');
 
-    const pessoa = await PessoaModel.buscarPorId(usuario.idPessoa);
+    const pessoa = await PessoaModel.buscarPessoaPorId(usuario.idPessoa);
     if (!pessoa) throw new Error('Pessoa associada ao usuário não encontrada.');
 
     return EmprestimoModel.criarEmprestimo(emprestimo);
@@ -22,37 +22,37 @@ class EmprestimoService {
   }
 
   buscarEmprestimoPorId(id: number): Promise<Emprestimo | null> {
-    return EmprestimoModel.buscarPorId(id);
+    return EmprestimoModel.buscarEmprestimoPorId(id);
   }
 
   async buscarEmprestimosPorUsuarioId(usuarioId: number): Promise<Emprestimo[]> {
-    const usuario = await UsuarioModel.buscarPorId(usuarioId);
+    const usuario = await UsuarioModel.buscarUsuarioPorId(usuarioId);
     if (!usuario) throw new Error('Usuário não encontrado.');
 
-    return EmprestimoModel.buscarPorUsuarioId(usuarioId);
+    return EmprestimoModel.buscarEmprestimoPorUsuarioId(usuarioId);
   }
 
   async atualizarEmprestimoPorId(id: number, emprestimo: Emprestimo): Promise<void> {
-    const existente = await EmprestimoModel.buscarPorId(id);
+    const existente = await EmprestimoModel.buscarEmprestimoPorId(id);
     if (!existente) throw new Error('Empréstimo não encontrado.');
 
-    const livro = await LivroModel.buscarPorId(emprestimo.livroId);
+    const livro = await LivroModel.buscarLivroPorId(emprestimo.livroId);
     if (!livro) throw new Error('Livro não encontrado.');
 
-    const usuario = await UsuarioModel.buscarPorId(emprestimo.usuarioId);
+    const usuario = await UsuarioModel.buscarUsuarioPorId(emprestimo.usuarioId);
     if (!usuario) throw new Error('Usuário não encontrado.');
 
-    const pessoa = await PessoaModel.buscarPorId(usuario.idPessoa);
+    const pessoa = await PessoaModel.buscarPessoaPorId(usuario.idPessoa);
     if (!pessoa) throw new Error('Pessoa associada ao usuário não encontrada.');
 
-    await EmprestimoModel.atualizarPorId(id, emprestimo);
+    await EmprestimoModel.atualizarEmprestimoPorId(id, emprestimo);
   }
 
   async removerEmprestimoPorId(id: number): Promise<void> {
-    const existente = await EmprestimoModel.buscarPorId(id);
+    const existente = await EmprestimoModel.buscarEmprestimoPorId(id);
     if (!existente) throw new Error('Empréstimo não encontrado.');
 
-    await EmprestimoModel.removerPorId(id);
+    await EmprestimoModel.removerEmprestimoPorId(id);
   }
 
 }

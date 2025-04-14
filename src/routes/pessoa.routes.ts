@@ -10,12 +10,12 @@ router.post('/', PessoaController.criarPessoa);
 router.get('/', PessoaController.listarPessoa);
 
 //Buscar pessoa por Id
-router.get('/:id', PessoaController.buscarPorId);
+router.get('/:id', PessoaController.buscarPessoaPorId);
 
 //Atualizar pessoa existente por Id
-router.put('/:id', PessoaController.atualizarPorId);
+router.put('/:id', PessoaController.atualizarPessoaPorId);
 
 //Remover pessoa existente por Id
-router.delete('/:id', PessoaController.removerPorId);
+router.delete('/:id', PessoaController.removerPessoaPorId);
 
 export default router;

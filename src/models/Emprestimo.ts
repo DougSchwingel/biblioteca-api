@@ -69,7 +69,7 @@ class EmprestimoModel {
   }  
 
   //Método para buscar um empréstimo de livro pelo Id
-  async buscarPorId(id: number): Promise<any> {
+  async buscarEmprestimoPorId(id: number): Promise<any> {
     const [rows] = await this.db.execute(`
       SELECT 
         e.id,
@@ -96,7 +96,7 @@ class EmprestimoModel {
   }  
  
   //Método para buscar todos os empréstimos de um usuário, com validação de usuário cadastrado
-  async buscarPorUsuarioId(usuarioId: number): Promise<any[]> {
+  async buscarEmprestimoPorUsuarioId(usuarioId: number): Promise<any[]> {
     //Verifica se o usuário existe
     const [usuarioRows] = await this.db.execute(
       'SELECT 1 FROM Usuario WHERE id = ?',
@@ -128,7 +128,7 @@ class EmprestimoModel {
   }  
    
   //Método para atualizar um empréstimo
-  async atualizarPorId(id: number, emprestimo: Emprestimo): Promise<void> {
+  async atualizarEmprestimoPorId(id: number, emprestimo: Emprestimo): Promise<void> {
     //Verifica se o empréstimo existe
     const [rows] = await this.db.execute(
       'SELECT 1 FROM Emprestimo WHERE id = ?',
@@ -147,7 +147,7 @@ class EmprestimoModel {
   }
 
   //Método para remover um empréstimo
-  async removerPorId(id: number): Promise<void> {
+  async removerEmprestimoPorId(id: number): Promise<void> {
     //Verifica se o empréstimo existe
     const [rows] = await this.db.execute(
       'SELECT 1 FROM Emprestimo WHERE id = ?',

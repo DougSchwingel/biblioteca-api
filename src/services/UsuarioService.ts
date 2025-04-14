@@ -4,12 +4,12 @@ import PessoaModel from '../models/Pessoa';
 
 class UsuarioService {
   async criarUsuario(usuario: Usuario): Promise<number> {
-    const pessoaExiste = await PessoaModel.buscarPorId(usuario.idPessoa);
+    const pessoaExiste = await PessoaModel.buscarPessoaPorId(usuario.idPessoa);
     if (!pessoaExiste) {
       throw new Error('Pessoa não encontrada.');
     }
 
-    const usuarioExistente = await UsuarioModel.buscarPorPessoaId(usuario.idPessoa);
+    const usuarioExistente = await UsuarioModel.buscarUsuarioPorPessoaId(usuario.idPessoa);
     if (usuarioExistente) {
       throw new Error('Usuário já cadastrado para essa pessoa.');
     }
@@ -27,35 +27,35 @@ class UsuarioService {
   }
 
   buscarUsuarioPorId(id: number): Promise<Usuario | null> {
-    return UsuarioModel.buscarPorId(id);
+    return UsuarioModel.buscarUsuarioPorId(id);
   }
 
   async atualizarUsuarioPorId(id: number, usuario: Usuario): Promise<void> {
-    const existente = await UsuarioModel.buscarPorId(id);
+    const existente = await UsuarioModel.buscarUsuarioPorId(id);
     if (!existente) {
       throw new Error('Usuário não encontrado.');
     }
 
-    const pessoaExiste = await PessoaModel.buscarPorId(usuario.idPessoa);
+    const pessoaExiste = await PessoaModel.buscarPessoaPorId(usuario.idPessoa);
     if (!pessoaExiste) {
       throw new Error('Pessoa não encontrada.');
     }
 
     const senhaCriptografada = await bcrypt.hash(usuario.senha, 10);
 
-    await UsuarioModel.atualizarPorId(id, {
+    await UsuarioModel.atualizarUsuarioPorId(id, {
       ...usuario,
       senha: senhaCriptografada,
     });
   }
 
   async removerUsuarioPorId(id: number): Promise<void> {
-    const existente = await UsuarioModel.buscarPorId(id);
+    const existente = await UsuarioModel.buscarUsuarioPorId(id);
     if (!existente) {
       throw new Error('Usuário não encontrado.');
     }
 
-    await UsuarioModel.removerPorId(id);
+    await UsuarioModel.removerUsuarioPorId(id);
   }
 
 }

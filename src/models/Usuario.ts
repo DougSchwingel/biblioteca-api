@@ -36,7 +36,7 @@ class UsuarioModel {
   }
 
   //Método para buscar um usuário por Id
-  async buscarPorId(id: number): Promise<any | null> {
+  async buscarUsuarioPorId(id: number): Promise<any | null> {
     const [rows] = await this.db.execute(`
       SELECT 
         u.id,
@@ -51,7 +51,7 @@ class UsuarioModel {
   }
 
   //Método para buscar um usuário pelo Id da pessoa
-  async buscarPorPessoaId(idPessoa: number): Promise<any | null> {
+  async buscarUsuarioPorPessoaId(idPessoa: number): Promise<any | null> {
     const [rows] = await this.db.execute(`
       SELECT 
         u.id,
@@ -66,8 +66,8 @@ class UsuarioModel {
   }
 
   //Método para atualizar um usuário existente 
-  async atualizarPorId(id: number, usuario: Usuario): Promise<void> {
-    const usuarioExistente = await this.buscarPorId(id);
+  async atualizarUsuarioPorId(id: number, usuario: Usuario): Promise<void> {
+    const usuarioExistente = await this.buscarUsuarioPorId(id);
     if (!usuarioExistente) {
       throw new Error('Usuário não encontrado.');
     }
@@ -79,8 +79,8 @@ class UsuarioModel {
   }
 
   //Método para remover um usuário, se não houver um empréstimo associado 
-  async removerPorId(id: number): Promise<void> {
-    const usuarioExistente = await this.buscarPorId(id);
+  async removerUsuarioPorId(id: number): Promise<void> {
+    const usuarioExistente = await this.buscarUsuarioPorId(id);
     if (!usuarioExistente) {
       throw new Error('Usuário não encontrado.');
     }

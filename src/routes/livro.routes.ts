@@ -10,12 +10,12 @@ router.post('/', LivroController.criarLivro);
 router.get('/', LivroController.listarLivro);
 
 //Buscar livro por Id
-router.get('/:id', LivroController.buscarPorId);
+router.get('/:id', LivroController.buscarLivroPorId);
 
 //Atualizar livro existente por Id
-router.put('/:id', LivroController.atualizarPorId);
+router.put('/:id', LivroController.atualizarLivroPorId);
 
 //Remover livro existente por Id
-router.delete('/:id', LivroController.removerPorId);
+router.delete('/:id', LivroController.removerLivroPorId);
 
 export default router;

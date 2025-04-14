@@ -42,7 +42,7 @@ class LivroModel {
   }
 
   //Método para buscar livro por Id
-  async buscarPorId(id: number): Promise<any | null> {
+  async buscarLivroPorId(id: number): Promise<any | null> {
     const [rows] = await this.db.execute(`
       SELECT 
         l.id,
@@ -57,8 +57,8 @@ class LivroModel {
   }
 
   //Método para atualizar um livro
-  async atualizarPorId(id: number, livro: Livro): Promise<void> {
-    const livroExistente = await this.buscarPorId(id);
+  async atualizarLivroPorId(id: number, livro: Livro): Promise<void> {
+    const livroExistente = await this.buscarLivroPorId(id);
     if (!livroExistente) {
       throw new Error('Livro não encontrado.');
     }
@@ -75,8 +75,8 @@ class LivroModel {
   }
 
   //Método para remover um livro, se não houver empréstimos vinculados
-  async removerPorId(id: number): Promise<void> {
-    const livroExistente = await this.buscarPorId(id);
+  async removerLivroPorId(id: number): Promise<void> {
+    const livroExistente = await this.buscarLivroPorId(id);
     if (!livroExistente) {
       throw new Error('Livro não encontrado.');
     }

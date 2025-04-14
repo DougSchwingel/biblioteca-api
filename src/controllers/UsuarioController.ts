@@ -16,7 +16,7 @@ class UsuarioController {
     res.json(usuarios);
   }
 
-  async buscarPorId(req: Request, res: Response) {
+  async buscarUsuarioPorId(req: Request, res: Response) {
     const id = parseInt(req.params.id);
     const usuario = await UsuarioService.buscarUsuarioPorId(id);
     if (usuario) {
@@ -26,7 +26,7 @@ class UsuarioController {
     }
   }
 
-  async atualizarPorId(req: Request, res: Response) {
+  async atualizarUsuarioPorId(req: Request, res: Response) {
     try {
       const id = parseInt(req.params.id);
       await UsuarioService.atualizarUsuarioPorId(id, req.body);
@@ -36,7 +36,7 @@ class UsuarioController {
     }
   }
 
-  async removerPorId(req: Request, res: Response) {
+  async removerUsuarioPorId(req: Request, res: Response) {
     try {
       const id = parseInt(req.params.id);
       await UsuarioService.removerUsuarioPorId(id);

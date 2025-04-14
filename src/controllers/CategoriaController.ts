@@ -16,7 +16,7 @@ class CategoriaController {
     res.json(categorias);
   }
 
-  async buscarPorId(req: Request, res: Response) {
+  async buscarCategoriaPorId(req: Request, res: Response) {
     const id = parseInt(req.params.id);
     const categoria = await CategoriaService.buscarCategoriaPorId(id);
     if (categoria) {
@@ -26,7 +26,7 @@ class CategoriaController {
     }
   }
 
-  async atualizarPorId(req: Request, res: Response) {
+  async atualizarCategoriaPorId(req: Request, res: Response) {
     try {
       const id = parseInt(req.params.id);
       await CategoriaService.atualizarCategoria(id, req.body);
@@ -36,7 +36,7 @@ class CategoriaController {
     }
   }
 
-  async removerPorId(req: Request, res: Response) {
+  async removerCategoriaPorId(req: Request, res: Response) {
     try {
       const id = parseInt(req.params.id);
       await CategoriaService.removerCategoria(id);

@@ -11,15 +11,15 @@ router.post('/', EmprestimoController.criarEmprestimo);
 router.get('/', EmprestimoController.listarEmprestimo);
 
 //Buscar empréstimo por Id
-router.get('/:id', EmprestimoController.buscarPorId);
+router.get('/:id', EmprestimoController.buscarEmprestimoPorId);
 
 //Buscar empréstimo por Id do usuário
-router.get('/usuario/:usuarioId', EmprestimoController.buscarPorUsuario);
+router.get('/usuario/:usuarioId', EmprestimoController.buscarEmprestimoPorUsuario);
 
 //Atualizar empréstimo existente por Id
-router.put('/:id', EmprestimoController.atualizarPorId);
+router.put('/:id', EmprestimoController.atualizarEmprestimoPorId);
 
 //Remover empréstimo existente por Id
-router.delete('/:id', EmprestimoController.removerPorId);
+router.delete('/:id', EmprestimoController.removerEmprestimoPorId);
 
 export default router;

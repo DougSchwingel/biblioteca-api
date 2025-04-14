@@ -10,12 +10,12 @@ router.post('/', UsuarioController.criarUsuario);
 router.get('/', UsuarioController.listarUsuario);
 
 //Buscar usuário por Id
-router.get('/:id', UsuarioController.buscarPorId);
+router.get('/:id', UsuarioController.buscarUsuarioPorId);
 
 //Atualizar usuário existente por Id
-router.put('/:id', UsuarioController.atualizarPorId);
+router.put('/:id', UsuarioController.atualizarUsuarioPorId);
 
 //Remover usuário existente por Id
-router.delete('/:id', UsuarioController.removerPorId);
+router.delete('/:id', UsuarioController.removerUsuarioPorId);
 
 export default router;

@@ -28,22 +28,22 @@ class PessoaModel {
   }
 
   //Método para buscar uma pessoa por Id
-  async buscarPorId(id: number): Promise<Pessoa | null> {
+  async buscarPessoaPorId(id: number): Promise<Pessoa | null> {
     const [rows] = await this.db.execute('SELECT * FROM Pessoa WHERE id = ?', [id]);
     const pessoas = rows as Pessoa[];
     return pessoas[0] || null;
   }
 
   //Método para buscar uma pessoa por email
-  async buscarPorEmail(email: string): Promise<Pessoa | null> {
+  async buscarPessoaPorEmail(email: string): Promise<Pessoa | null> {
     const [rows] = await this.db.execute('SELECT * FROM Pessoa WHERE email = ?', [email]);
     const pessoas = rows as Pessoa[];
     return pessoas[0] || null;
   }
 
   //Método para atualizar uma pessoa existente
-  async atualizarPorId(id: number, pessoa: Pessoa): Promise<void> {
-    const pessoaExistente = await this.buscarPorId(id);
+  async atualizarPessoaPorId(id: number, pessoa: Pessoa): Promise<void> {
+    const pessoaExistente = await this.buscarPessoaPorId(id);
     if (!pessoaExistente) {
       throw new Error('Pessoa não encontrada.');
     }
@@ -55,8 +55,8 @@ class PessoaModel {
   }
 
   //Método para remover uma pessoa, se não houver usuário associado
-  async removerPorId(id: number): Promise<void> {
-    const pessoaExistente = await this.buscarPorId(id);
+  async removerPessoaPorId(id: number): Promise<void> {
+    const pessoaExistente = await this.buscarPessoaPorId(id);
     if (!pessoaExistente) {
       throw new Error('Pessoa não encontrada.');
     }

@@ -16,7 +16,7 @@ class EmprestimoController {
     res.json(emprestimos);
   }
 
-  async buscarPorId(req: Request, res: Response) {
+  async buscarEmprestimoPorId(req: Request, res: Response) {
     const id = parseInt(req.params.id);
     const emprestimo = await EmprestimoService.buscarEmprestimoPorId(id);
     if (emprestimo) {
@@ -26,7 +26,7 @@ class EmprestimoController {
     }
   }
 
-  async buscarPorUsuario(req: Request, res: Response) {
+  async buscarEmprestimoPorUsuario(req: Request, res: Response) {
     try {
       const usuarioId = parseInt(req.params.usuarioId);
       const emprestimos = await EmprestimoService.buscarEmprestimosPorUsuarioId(usuarioId);
@@ -36,7 +36,7 @@ class EmprestimoController {
     }
   }
 
-  async atualizarPorId(req: Request, res: Response) {
+  async atualizarEmprestimoPorId(req: Request, res: Response) {
     try {
       const id = parseInt(req.params.id);
       await EmprestimoService.atualizarEmprestimoPorId(id, req.body);
@@ -46,7 +46,7 @@ class EmprestimoController {
     }
   }
 
-  async removerPorId(req: Request, res: Response) {
+  async removerEmprestimoPorId(req: Request, res: Response) {
     try {
       const id = parseInt(req.params.id);
       await EmprestimoService.removerEmprestimoPorId(id);

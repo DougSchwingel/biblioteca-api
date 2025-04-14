@@ -16,7 +16,7 @@ class LivroController {
     res.json(livros);
   }
 
-  async buscarPorId(req: Request, res: Response) {
+  async buscarLivroPorId(req: Request, res: Response) {
     const id = parseInt(req.params.id);
     const livro = await LivroService.buscarLivroPorId(id);
     if (livro) {
@@ -26,7 +26,7 @@ class LivroController {
     }
   }
 
-  async atualizarPorId(req: Request, res: Response) {
+  async atualizarLivroPorId(req: Request, res: Response) {
     try {
       const id = parseInt(req.params.id);
       await LivroService.atualizarLivroPorId(id, req.body);
@@ -36,7 +36,7 @@ class LivroController {
     }
   }
 
-  async removerPorId(req: Request, res: Response) {
+  async removerLivroPorId(req: Request, res: Response) {
     try {
       const id = parseInt(req.params.id);
       await LivroService.removerLivroPorId(id);
