@@ -11,6 +11,20 @@
       "description": "Servidor Local"
     }
   ],
+  "tags": [
+    {
+      "name": "Pessoas",
+      "description": "Operações relacionadas a pessoas"
+    },
+    {
+      "name": "Usuários",
+      "description": "Operações relacionadas a usuários do sistema"
+    },
+    {
+      "name": "Livros",
+      "description": "Operações relacionadas aos livros da biblioteca"
+    }
+  ],
   "paths": {
     "/pessoas": {
       "get": {

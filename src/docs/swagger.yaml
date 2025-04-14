@@ -1,0 +1,498 @@
+openapi: 3.0.0
+info:
+  title: API Biblioteca
+  version: 1.0.0
+  description: API para gerenciamento de livros de uma biblioteca, incluindo empréstimos e cadastro de usuários.
+
+servers:
+  - url: http://localhost:3000/api
+    description: Servidor Local
+
+tags:
+  - name: Pessoas
+    description: Operações relacionadas a pessoas
+  - name: Usuários
+    description: Operações relacionadas a usuários do sistema
+  - name: Livros
+    description: Operações relacionadas aos livros da biblioteca
+  - name: Categorias
+    description: Operações relacionadas às categorias dos livros
+  - name: Empréstimos
+    description: Operações relacionadas aos empréstimos de livros
+
+paths:
+
+  # Pessoas
+  /pessoas:
+    get:
+      tags: [Pessoas]
+      summary: Listar todas as pessoas
+      responses:
+        '200':
+          description: Lista de pessoas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pessoa'
+    post:
+      tags: [Pessoas]
+      summary: Criar uma nova pessoa
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pessoa'
+      responses:
+        '201':
+          description: Pessoa criada com sucesso
+
+  /pessoas/{id}:
+    get:
+      tags: [Pessoas]
+      summary: Buscar uma pessoa por Id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id da pessoa
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Pessoa encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pessoa'
+        '404':
+          description: Pessoa não encontrada
+    put:
+      tags: [Pessoas]
+      summary: Atualizar pessoa por Id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id da pessoa
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pessoa'
+      responses:
+        '200':
+          description: Pessoa atualizada com sucesso
+        '404':
+          description: Pessoa não encontrada
+    delete:
+      tags: [Pessoas]
+      summary: Remover uma pessoa por Id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id da pessoa
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Pessoa removida com sucesso
+        '404':
+          description: Pessoa não encontrada
+
+  # Usuários
+  /usuarios:
+    get:
+      tags: [Usuários]
+      summary: Listar todos os usuários
+      responses:
+        '200':
+          description: Lista de usuários
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Usuario'
+    post:
+      tags: [Usuários]
+      summary: Criar um novo usuário
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Usuario'
+      responses:
+        '201':
+          description: Usuário criado com sucesso
+        '400':
+          description: Erro de validação
+
+  /usuarios/{id}:
+    get:
+      tags: [Usuários]
+      summary: Buscar um usuário por Id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id do usuário
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Usuário encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Usuario'
+        '404':
+          description: Usuário não encontrado
+    put:
+      tags: [Usuários]
+      summary: Atualizar usuário por Id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id do usuário
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Usuario'
+      responses:
+        '200':
+          description: Usuário atualizado com sucesso
+        '404':
+          description: Usuário não encontrado
+    delete:
+      tags: [Usuários]
+      summary: Remover um usuário por Id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id do usuário
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Usuário removido com sucesso
+        '404':
+          description: Usuário não encontrado
+
+  # Livros
+  /livros:
+    get:
+      tags: [Livros]
+      summary: Listar todos os livros
+      responses:
+        '200':
+          description: Lista de livros
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Livro'
+    post:
+      tags: [Livros]
+      summary: Adicionar um novo livro
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Livro'
+      responses:
+        '201':
+          description: Livro criado com sucesso
+
+  /livros/{id}:
+    get:
+      tags: [Livros]
+      summary: Buscar um livro por Id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id do livro
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Livro encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Livro'
+        '404':
+          description: Livro não encontrado
+    put:
+      tags: [Livros]
+      summary: Atualizar livro por Id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id do livro
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Livro'
+      responses:
+        '200':
+          description: Livro atualizado com sucesso
+        '404':
+          description: Livro não encontrado
+    delete:
+      tags: [Livros]
+      summary: Remover um livro por Id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id do livro
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Livro removido com sucesso
+        '404':
+          description: Livro não encontrado
+
+  # Categorias
+  /categorias:
+    get:
+      tags: [Categorias]
+      summary: Listar todas as categorias
+      responses:
+        '200':
+          description: Lista de categorias
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Categoria'
+    post:
+      tags: [Categorias]
+      summary: Criar uma nova categoria
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Categoria'
+      responses:
+        '201':
+          description: Categoria criada com sucesso
+        '400':
+          description: Erro de validação
+
+  /categorias/{id}:
+    get:
+      tags: [Categorias]
+      summary: Buscar categoria por Id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id da categoria
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Categoria encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Categoria'
+        '404':
+          description: Categoria não encontrada
+    put:
+      tags: [Categorias]
+      summary: Atualizar categoria por Id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id da categoria
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Categoria'
+      responses:
+        '200':
+          description: Categoria atualizada com sucesso
+        '404':
+          description: Categoria não encontrada
+    delete:
+      tags: [Categorias]
+      summary: Remover categoria por Id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id da categoria
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Categoria removida com sucesso
+        '404':
+          description: Categoria não encontrada
+
+  # Empréstimos
+  /emprestimos:
+    get:
+      tags: [Empréstimos]
+      summary: Listar todos os empréstimos
+      responses:
+        '200':
+          description: Lista de empréstimos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Emprestimo'
+    post:
+      tags: [Empréstimos]
+      summary: Criar um novo empréstimo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Emprestimo'
+      responses:
+        '201':
+          description: Empréstimo criado com sucesso
+        '400':
+          description: Erro de validação
+
+  /emprestimos/{id}:
+    get:
+      tags: [Empréstimos]
+      summary: Buscar um empréstimo por Id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id do empréstimo
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Empréstimo encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Emprestimo'
+        '404':
+          description: Empréstimo não encontrado
+    put:
+      tags: [Empréstimos]
+      summary: Atualizar empréstimo por Id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id do empréstimo
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Emprestimo'
+      responses:
+        '200':
+          description: Empréstimo atualizado com sucesso
+        '404':
+          description: Empréstimo não encontrado
+    delete:
+      tags: [Empréstimos]
+      summary: Remover um empréstimo por Id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Id do empréstimo
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Empréstimo removido com sucesso
+        '404':
+          description: Empréstimo não encontrado
+
+components:
+  schemas:
+    Pessoa:
+      type: object
+      required: [nome, email]
+      properties:
+        nome:
+          type: string
+        email:
+          type: string
+    Usuario:
+      type: object
+      required: [idPessoa, senha]
+      properties:
+        idPessoa:
+          type: integer
+        senha:
+          type: string
+    Livro:
+      type: object
+      required: [titulo, autor, categoriaId]
+      properties:
+        titulo:
+          type: string
+        autor:
+          type: string
+        categoriaId:
+          type: integer
+    Categoria:
+      type: object
+      required: [nome]
+      properties:
+        nome:
+          type: string
+    Emprestimo:
+      type: object
+      required: [livroId, usuarioId, dataEmprestimo, dataDevolucao]
+      properties:
+        livroId:
+          type: integer
+        usuarioId:
+          type: integer
+        dataEmprestimo:
+          type: string
+          format: date
+        dataDevolucao:
+          type: string
+          format: date
