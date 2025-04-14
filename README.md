@@ -114,4 +114,4 @@ O diagrama de componentes detalha as partes internas da API, como os controllers
 ## Contribuições
 
 O projeto atualmente consta com contribuições dos seguintes envolvidos:
-@DougSchwingel
+@github/DougSchwingel
