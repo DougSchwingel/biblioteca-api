@@ -674,9 +674,6 @@
           },
           "categoriaId": {
             "type": "integer"
-          },
-          "categoriaNome": {
-            "type": "string"
           }
         },
         "required": ["titulo", "autor", "categoriaId"]
