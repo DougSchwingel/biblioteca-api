@@ -88,19 +88,19 @@ A modelagem C4 descreve a arquitetura do sistema em diferentes níveis de detalh
 
 O diagrama de contexto mostra o sistema em seu ambiente, com os usuários e sistemas externos interagindo com a API da biblioteca.
 
-![Diagrama de Contexto](https://ibb.co/pjhpD6v8)
+![Diagrama de Contexto](https://github.com/user-attachments/assets/9824b436-61ff-4aed-ab39-acc16d4e11a3)
 
 ### Diagrama de Contêineres
 
 O diagrama de contêineres descreve a aplicação como um conjunto de contêineres, com a API, banco de dados e outros componentes do sistema.
 
-![Diagrama de Contêineres](https://ibb.co/sp38ScTT)
+![Diagrama de Contêineres](https://github.com/user-attachments/assets/362f22fb-0725-476a-88cd-0532807e7300)
 
 ### Diagrama de Componentes
 
 O diagrama de componentes detalha as partes internas da API, como os controllers, models, services, e como eles se comunicam para realizar as operações.
 
-![Diagrama de Componentes](https://ibb.co/TDzsmrK9)
+![Diagrama de Componentes](https://github.com/user-attachments/assets/56ec094f-b413-4d01-8ff1-ba5aff0b0cd5)
 
 ## Como Rodar o Projeto
 
