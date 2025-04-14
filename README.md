@@ -1,5 +1,7 @@
 # API Biblioteca
 
+![https://img.shields.io/badge/:badgeContent](https://img.shields.io/badge/NODE.JS-BACKEND-5FA04E?logo=nodedotjs&style=for-the-badge) ![https://img.shields.io/badge/:badgeContent](https://img.shields.io/badge/EXPRESS-FRAMEWORK-000000?logo=express&style=for-the-badge) ![https://img.shields.io/badge/:badgeContent](https://img.shields.io/badge/MYSQL-DATABASE-4479A1?logo=mysql&style=for-the-badge) ![https://img.shields.io/badge/:badgeContent](https://img.shields.io/badge/TYPESCRIPT-BACKEND-3178C6?logo=typescript&style=for-the-badge) ![https://img.shields.io/badge/:badgeContent](https://img.shields.io/badge/SWAGGER-API%20DOCS-85EA2D?logo=SWAGGER&style=for-the-badge)
+
 A **API Biblioteca** é uma **RESTful API** para o gerenciamento de uma biblioteca, permitindo o controle de livros, empréstimos e o cadastro de usuários. A API foi construída utilizando o padrão **MVC** (Model-View-Controller) e expõe endpoints para operações CRUD (Criar, Ler, Atualizar, Deletar) sobre as entidades principais da biblioteca, como livros, categorias, pessoas, usuários e empréstimos.
 
 ## Funcionalidades
@@ -88,19 +90,19 @@ A modelagem C4 descreve a arquitetura do sistema em diferentes níveis de detalh
 
 O diagrama de contexto mostra o sistema em seu ambiente, com os usuários e sistemas externos interagindo com a API da biblioteca.
 
-![Diagrama de Contexto](https://ibb.co/pjhpD6v8)
+![Diagrama de Contexto](https://github.com/user-attachments/assets/9824b436-61ff-4aed-ab39-acc16d4e11a3)
 
 ### Diagrama de Contêineres
 
 O diagrama de contêineres descreve a aplicação como um conjunto de contêineres, com a API, banco de dados e outros componentes do sistema.
 
-![Diagrama de Contêineres](https://ibb.co/sp38ScTT)
+![Diagrama de Contêineres](https://github.com/user-attachments/assets/362f22fb-0725-476a-88cd-0532807e7300)
 
 ### Diagrama de Componentes
 
 O diagrama de componentes detalha as partes internas da API, como os controllers, models, services, e como eles se comunicam para realizar as operações.
 
-![Diagrama de Componentes](https://ibb.co/TDzsmrK9)
+![Diagrama de Componentes](https://github.com/user-attachments/assets/56ec094f-b413-4d01-8ff1-ba5aff0b0cd5)
 
 ## Como Rodar o Projeto
 
@@ -114,4 +116,4 @@ O diagrama de componentes detalha as partes internas da API, como os controllers
 ## Contribuições
 
 O projeto atualmente consta com contribuições dos seguintes envolvidos:
-@DougSchwingel
+@github/DougSchwingel
